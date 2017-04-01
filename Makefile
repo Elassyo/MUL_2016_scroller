@@ -5,7 +5,7 @@
 ## Login   <arthur.melin@epitech.eu>
 ##
 ## Started on  Sat Apr  1 12:34:59 2017 Arthur Melin
-## Last update Sat Apr  1 13:44:04 2017 Arthur Melin
+## Last update Sat Apr  1 14:56:08 2017 Rémi
 ##
 
 NAME		=	scroller
@@ -26,7 +26,7 @@ OBJSDIR		=	obj
 LIBSDIRS	=	lib
 
 CC		=	gcc
-CFLAGS		=	-c -g -I$(INCSDIR) -O2 -W -Wall -Wextra -pedantic
+CFLAGS		=	-c -I$(INCSDIR) -O2 -W -Wall -Wextra -pedantic
 LDFLAGS		=	$(addprefix -L,$(LIBSDIRS)) $(LIBS)
 
 MKDIR		=	mkdir -p
