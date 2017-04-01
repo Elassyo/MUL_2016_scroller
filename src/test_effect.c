@@ -12,18 +12,25 @@
 
 void	*test_init(int argc, char **argv, int *pos)
 {
+  float	*counter;
+
   (void)argc;
   (void)argv;
   (*pos)++;
-  return (malloc(0));
+  if (!(counter = malloc(sizeof(float))))
+    return (NULL);
+  *counter = 0;
+  return (counter);
 }
 
-int	test_render(t_scroller *app, void *param,
-		    const sfUint8 *ifb, sfUint8 *ofb)
+int	test_render(t_scroller *app, void *param)
 {
-  (void)param;
-  memcpy(ofb, ifb, app->width * app->height * 4);
-  return (0);
+  float	*counter;
+
+  counter = (float *)param;
+  memset(app->ofb, cos((*counter)++ * M_PI / 180) * 127 + 128,
+	 4 * app->width * app->height);
+  return (1);
 }
 
 void	test_free(void *param)

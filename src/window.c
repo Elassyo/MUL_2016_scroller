@@ -21,10 +21,15 @@ int		window_create(t_scroller *app)
     return (my_die("Error: failed to open window\n"));
   if (!(app->texture = sfRenderTexture_create(app->width, app->height, 0)))
     return (my_die("Error: failed to create render texture\n"));
+  if (!(app->sprite =  sfSprite_create()))
+    return (my_die("Error: failed to create render sprite\n"));
   if (!(app->tmpTexture = sfTexture_create(app->width, app->height)))
     return (my_die("Error: failed to create temporary target texture\n"));
   if (!(app->tmpSprite =  sfSprite_create()))
     return (my_die("Error: failed to create temporary target sprite\n"));
+  if (!(app->ifb = malloc(4 * app->width * app->height)) ||
+      !(app->ofb = malloc(4 * app->width * app->height)))
+    return (my_die("Fatal: malloc failed\n"));
   return (0);
 }
 
@@ -33,5 +38,8 @@ void	window_destroy(t_scroller *app)
   sfRenderWindow_destroy(app->window);
   sfRenderTexture_destroy(app->texture);
   sfTexture_destroy(app->tmpTexture);
+  sfSprite_destroy(app->sprite);
   sfSprite_destroy(app->tmpSprite);
+  free(app->ifb);
+  free(app->ofb);
 }

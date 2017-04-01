@@ -5,7 +5,7 @@
 ## Login   <arthur.melin@epitech.eu>
 ##
 ## Started on  Sat Apr  1 12:34:59 2017 Arthur Melin
-## Last update Sat Apr  1 15:37:09 2017 Arthur Melin
+## Last update Sat Apr  1 16:24:12 2017 Arthur Melin
 ##
 
 NAME		=	scroller
@@ -13,15 +13,15 @@ NAME		=	scroller
 SRCS		=	main.c		\
 			scroller.c	\
 			window.c	\
-			test_effect.c	\
 			effects.c	\
+			test_effect.c	\
 			mini_my.c
 OBJS		=	$(SRCS:.c=.o)
 INCS		=	scroller.h
 LIBS		=	-lm -lcsfml-audio -lcsfml-graphics -lcsfml-window -lcsfml-system
 
 SRCSDIR		=	src
-SUBDIRS		=
+SUBDIRS		=	effects
 INCSDIR		=	include
 OBJSDIR		=	obj
 LIBSDIRS	=	lib

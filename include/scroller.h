@@ -27,15 +27,13 @@ typedef struct	s_effect
 {
   char		*name;
   void		*(*init)(int, char **, int *);
-  int		(*render)(struct s_scroller *, void *,
-			  const sfUint8 *, sfUint8 *);
+  int		(*render)(struct s_scroller *, void *);
   void		(*free)(void *);
 }		t_effect;
 
 typedef struct		s_effect_list
 {
-  int			(*render)(struct s_scroller *, void *,
-				  const sfUint8 *, sfUint8 *);
+  int			(*render)(struct s_scroller *, void *);
   void			(*free)(void *);
   void			*param;
   struct s_effect_list	*next;
@@ -45,8 +43,11 @@ typedef struct		s_scroller
 {
   int			width;
   int			height;
+  sfUint8		*ifb;
+  sfUint8		*ofb;
   sfRenderWindow	*window;
   sfRenderTexture	*texture;
+  sfSprite		*sprite;
   sfTexture		*tmpTexture;
   sfSprite		*tmpSprite;
   int			effects_count;
@@ -63,8 +64,7 @@ int		init_effects(t_scroller *app);
 int		list_effects(char *app_name, t_scroller *app);
 
 void		*test_init(int argc, char **argv, int *pos);
-int		test_render(t_scroller *app, void *param,
-			    const sfUint8 *ifb, sfUint8 *ofb);
+int		test_render(t_scroller *app, void *param);
 void		test_free(void *param);
 
 int		my_die(char *msg);
