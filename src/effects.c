@@ -17,7 +17,7 @@ static void	add_effect(t_effect *ptr, char *name, ...)
   va_start(args, name);
   ptr->name = name;
   ptr->init = va_arg(args, void *(*)(int, char **, int *));
-  ptr->render = va_arg(args, void (*)(struct s_scroller *, void *,
+  ptr->render = va_arg(args, int (*)(struct s_scroller *, void *,
 				     const sfUint8 *, sfUint8 *));
   ptr->free = va_arg(args, void (*)(void *));
   va_end(args);

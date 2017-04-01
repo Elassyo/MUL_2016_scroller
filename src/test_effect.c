@@ -18,11 +18,12 @@ void	*test_init(int argc, char **argv, int *pos)
   return (malloc(0));
 }
 
-void	test_render(t_scroller *app, void *param,
+int	test_render(t_scroller *app, void *param,
 		    const sfUint8 *ifb, sfUint8 *ofb)
 {
   (void)param;
   memcpy(ofb, ifb, app->width * app->height * 4);
+  return (0);
 }
 
 void	test_free(void *param)

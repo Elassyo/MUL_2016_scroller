@@ -5,7 +5,7 @@
 ** Login   <arthur.melin@epitech.eu>
 **
 ** Started on  Sat Apr  1 12:38:53 2017 Arthur Melin
-** Last update Sat Apr  1 14:53:19 2017 Arthur Melin
+** Last update Sat Apr  1 15:37:40 2017 Arthur Melin
 */
 
 #include <scroller.h>
@@ -81,7 +81,7 @@ int			main(int argc, char **argv)
   app.height = atoi(argv[2]);
   if (app.width <= 0 || app.height <= 0)
     return (my_die("Error: invalid window size\n"));
-  if (window_create(&app))
+  if (window_create(&app) || scroller(&app))
     return (84);
   effect = app.effect_list;
   while (effect)

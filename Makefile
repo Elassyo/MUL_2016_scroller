@@ -5,12 +5,13 @@
 ## Login   <arthur.melin@epitech.eu>
 ##
 ## Started on  Sat Apr  1 12:34:59 2017 Arthur Melin
-## Last update Sat Apr  1 14:56:08 2017 Rémi
+## Last update Sat Apr  1 15:37:09 2017 Arthur Melin
 ##
 
 NAME		=	scroller
 
 SRCS		=	main.c		\
+			scroller.c	\
 			window.c	\
 			test_effect.c	\
 			effects.c	\
