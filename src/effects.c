@@ -8,11 +8,13 @@
 ** Last update Sat Apr  1 13:18:50 2017 Rémi
 */
 
-void	*init_effect(int argc, char **argv, int *pos)
+#include <scroller.h>
+
+void	*test_init(int argc, char **argv, int *pos)
 {
-  return ((void *) 1);
+  return ((void *)1);
 }
 
-void	init_render(t_scroller, void *lol)
+void	test_render(t_scroller *lel, void *lol)
 {
 }
