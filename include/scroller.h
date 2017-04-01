@@ -37,13 +37,17 @@ typedef struct		s_scroller
   t_effect		*effects;
 }			t_scroller;
 
-int		my_die(char *msg);
-void		*my_die_null(char *msg);
 
 int		window_create(t_scroller *app);
 void		window_destroy(t_scroller *app);
 
+int		init_effects(t_scroller *app);
+int		list_effects(char *app_name, t_scroller *app);
+
 void		*test_init(int argc, char **argv, int *pos);
 void		test_render(t_scroller *lel, void *lol);
+
+int		my_die(char *msg);
+void		*my_die_null(char *msg);
 
 #endif /* !SCROLLER_H_ */

@@ -12,6 +12,7 @@ NAME		=	scroller
 
 SRCS		=	main.c		\
 			window.c	\
+			test_effect.c	\
 			effects.c	\
 			mini_my.c
 OBJS		=	$(SRCS:.c=.o)
