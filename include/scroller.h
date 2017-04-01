@@ -24,7 +24,7 @@ struct	s_scroller;
 typedef struct	s_effect
 {
   char		*name;
-  void		(*init)(int, char **, int *);
+  void		*(*init)(int, char **, int *);
   void		(*render)(struct s_scroller *, void *);
 }		t_effect;
 
