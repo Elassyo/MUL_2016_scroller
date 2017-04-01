@@ -5,7 +5,7 @@
 ** Login   <arthur.melin@epitech.eu>
 **
 ** Started on  Sat Apr  1 15:15:13 2017 Arthur Melin
-** Last update Sat Apr  1 16:11:25 2017 Arthur Melin
+** Last update Sat Apr  1 18:22:29 2017 Arthur Melin
 */
 
 #include <scroller.h>
@@ -27,20 +27,25 @@ static void		render(t_scroller *app)
 	  sfTexture_updateFromPixels(app->tmpTexture, app->ofb,
 				     app->width, app->height, 0, 0);
 	  sfSprite_setTexture(app->tmpSprite, app->tmpTexture, sfTrue);
-	  sfRenderTexture_clear(app->texture, sfBlack);
 	  sfRenderTexture_drawSprite(app->texture, app->tmpSprite, NULL);
 	}
       sfImage_destroy(image);
       effect = effect->next;
     }
   texture = sfRenderTexture_getTexture(app->texture);
-  sfSprite_setTexture(app->sprite, texture, sfTrue);
+  sfSprite_setTexture(app->sprite, texture, sfFalse);
 }
 
 int			scroller(t_scroller *app)
 {
+  sfIntRect		rect;
   sfEvent		event;
 
+  rect.left = 0;
+  rect.top = app->height;
+  rect.width = app->width;
+  rect.height = -app->height;
+  sfSprite_setTextureRect(app->sprite, rect);
   while (sfRenderWindow_isOpen(app->window))
     {
       render(app);

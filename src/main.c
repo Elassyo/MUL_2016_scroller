@@ -16,7 +16,7 @@ static int		add_effect(t_scroller *app, int	i, void *param)
   t_effect_list		**ptr;
 
   ptr = &app->effect_list;
-  while (*ptr && (*ptr)->next)
+  while (*ptr)
     ptr = &(*ptr)->next;
   if (!(effect = malloc(sizeof(t_effect_list))))
     return (my_die("Fatal: malloc failed\n"));

@@ -12,6 +12,7 @@
 # define SCROLLER_H_
 
 # include <math.h>
+# include <ctype.h>
 # include <stdio.h>
 # include <stdarg.h>
 # include <stdlib.h>
@@ -62,10 +63,6 @@ void		window_destroy(t_scroller *app);
 
 int		init_effects(t_scroller *app);
 int		list_effects(char *app_name, t_scroller *app);
-
-void		*test_init(int argc, char **argv, int *pos);
-int		test_render(t_scroller *app, void *param);
-void		test_free(void *param);
 
 int		my_die(char *msg);
 void		*my_die_null(char *msg);

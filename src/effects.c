@@ -5,10 +5,10 @@
 ** Login   <remi.vuillemin@epitech.eu@epitech.net>
 **
 ** Started on  Sat Apr  1 13:11:05 2017 Rémi
-** Last update Sat Apr  1 16:23:36 2017 Arthur Melin
+** Last update Sat Apr  1 16:42:25 2017 Arthur Melin
 */
 
-#include <scroller.h>
+#include <effects.h>
 
 static void	add_effect(t_effect *ptr, char *name, ...)
 {
@@ -26,11 +26,12 @@ int		init_effects(t_scroller *app)
 {
   t_effect	*ptr;
 
-  app->effects_count = 1;
+  app->effects_count = 2;
   if (!(app->effects = malloc(app->effects_count * sizeof(t_effect))))
     return (my_die("Fatal: malloc failed\n"));
   ptr = app->effects;
-  add_effect(ptr++, "test", test_init, test_render, test_free);
+  ADD_EFFECT(test);
+  ADD_EFFECT(scrolling_text);
   return (0);
 }
 
