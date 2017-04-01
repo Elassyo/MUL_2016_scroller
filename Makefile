@@ -5,12 +5,13 @@
 ## Login   <arthur.melin@epitech.eu>
 ##
 ## Started on  Sat Apr  1 12:34:59 2017 Arthur Melin
-## Last update Sat Apr  1 12:41:25 2017 Arthur Melin
+## Last update Sat Apr  1 13:08:16 2017 Arthur Melin
 ##
 
 NAME		=	scroller
 
-SRCS		=	main.c
+SRCS		=	main.c		\
+			mini_my.c
 OBJS		=	$(SRCS:.c=.o)
 INCS		=	scroller.h
 LIBS		=	-lm -lcsfml-audio -lcsfml-graphics -lcsfml-window -lcsfml-system
