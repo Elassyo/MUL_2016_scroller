@@ -26,7 +26,7 @@ OBJSDIR		=	obj
 LIBSDIRS	=	lib
 
 CC		=	gcc
-CFLAGS		=	-c -I$(INCSDIR) -O2 -W -Wall -Wextra -pedantic
+CFLAGS		=	-c -g -I$(INCSDIR) -O2 -W -Wall -Wextra -pedantic
 LDFLAGS		=	$(addprefix -L,$(LIBSDIRS)) $(LIBS)
 
 MKDIR		=	mkdir -p

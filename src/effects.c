@@ -5,19 +5,22 @@
 ** Login   <remi.vuillemin@epitech.eu@epitech.net>
 **
 ** Started on  Sat Apr  1 13:11:05 2017 Rémi
-** Last update Sat Apr  1 13:58:13 2017 Arthur Melin
+** Last update Sat Apr  1 14:18:17 2017 Arthur Melin
 */
 
 #include <scroller.h>
 
-static void	add_effect(t_effect *ptr, char *name,
-			   void *(*init)(int, char **, int *),
-			   void (*render)(t_scroller *, void *,
-					  const sfUint8 *, sfUint8 *))
+static void	add_effect(t_effect *ptr, char *name, ...)
 {
+  va_list	args;
+
+  va_start(args, name);
   ptr->name = name;
-  ptr->init = init;
-  ptr->render = render;
+  ptr->init = va_arg(args, void *(*)(int, char **, int *));
+  ptr->render = va_arg(args, void (*)(struct s_scroller *, void *,
+				     const sfUint8 *, sfUint8 *));
+  ptr->free = va_arg(args, void (*)(void *));
+  va_end(args);
 }
 
 int		init_effects(t_scroller *app)
@@ -28,7 +31,7 @@ int		init_effects(t_scroller *app)
   if (!(app->effects = malloc(app->effects_count * sizeof(t_effect))))
     return (my_die("Fatal: malloc failed\n"));
   ptr = app->effects;
-  add_effect(ptr++, "test", test_init, test_render);
+  add_effect(ptr++, "test", test_init, test_render, test_free);
   return (0);
 }
 

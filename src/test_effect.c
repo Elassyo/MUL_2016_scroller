@@ -14,8 +14,8 @@ void	*test_init(int argc, char **argv, int *pos)
 {
   (void)argc;
   (void)argv;
-  (void)pos;
-  return ((void *)1);
+  (*pos)++;
+  return (malloc(0));
 }
 
 void	test_render(t_scroller *app, void *param,
@@ -23,4 +23,9 @@ void	test_render(t_scroller *app, void *param,
 {
   (void)param;
   memcpy(ofb, ifb, app->width * app->height * 4);
+}
+
+void	test_free(void *param)
+{
+  free(param);
 }
