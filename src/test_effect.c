@@ -12,9 +12,15 @@
 
 void	*test_init(int argc, char **argv, int *pos)
 {
+  (void)argc;
+  (void)argv;
+  (void)pos;
   return ((void *)1);
 }
 
-void	test_render(t_scroller *lel, void *lol)
+void	test_render(t_scroller *app, void *param,
+		    const sfUint8 *ifb, sfUint8 *ofb)
 {
+  (void)param;
+  memcpy(ofb, ifb, app->width * app->height * 4);
 }

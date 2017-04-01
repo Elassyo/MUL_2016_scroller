@@ -1,18 +1,19 @@
 /*
 ** effects.c for  in /home/remi/delivery/Igraph2016/scroller/src
-** 
+**
 ** Made by Rémi
 ** Login   <remi.vuillemin@epitech.eu@epitech.net>
-** 
+**
 ** Started on  Sat Apr  1 13:11:05 2017 Rémi
-** Last update Sat Apr  1 13:18:50 2017 Rémi
+** Last update Sat Apr  1 13:58:13 2017 Arthur Melin
 */
 
 #include <scroller.h>
 
 static void	add_effect(t_effect *ptr, char *name,
 			   void *(*init)(int, char **, int *),
-			   void (*render)(t_scroller *, void *))
+			   void (*render)(t_scroller *, void *,
+					  const sfUint8 *, sfUint8 *))
 {
   ptr->name = name;
   ptr->init = init;

@@ -5,7 +5,7 @@
 ** Login   <arthur.melin@epitech.eu>
 **
 ** Started on  Sat Apr  1 12:39:20 2017 Arthur Melin
-** Last update Sat Apr  1 13:18:14 2017 Rémi
+** Last update Sat Apr  1 13:59:19 2017 Arthur Melin
 */
 
 #ifndef SCROLLER_H_
@@ -14,6 +14,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <SFML/Audio.h>
 # include <SFML/Graphics.h>
 # include <SFML/Window.h>
@@ -25,7 +26,8 @@ typedef struct	s_effect
 {
   char		*name;
   void		*(*init)(int, char **, int *);
-  void		(*render)(struct s_scroller *, void *);
+  void		(*render)(struct s_scroller *, void *,
+			  const sfUint8 *, sfUint8 *);
 }		t_effect;
 
 typedef struct		s_scroller
@@ -45,7 +47,8 @@ int		init_effects(t_scroller *app);
 int		list_effects(char *app_name, t_scroller *app);
 
 void		*test_init(int argc, char **argv, int *pos);
-void		test_render(t_scroller *lel, void *lol);
+void		test_render(t_scroller *app, void *param,
+			    const sfUint8 *ifb, sfUint8 *ofb);
 
 int		my_die(char *msg);
 void		*my_die_null(char *msg);
