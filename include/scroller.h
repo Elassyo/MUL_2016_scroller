@@ -5,7 +5,7 @@
 ** Login   <arthur.melin@epitech.eu>
 **
 ** Started on  Sat Apr  1 12:39:20 2017 Arthur Melin
-** Last update Sat Apr  1 13:08:43 2017 Arthur Melin
+** Last update Sat Apr  1 13:18:14 2017 Rémi
 */
 
 #ifndef SCROLLER_H_
@@ -39,5 +39,7 @@ typedef struct		s_scroller
 
 int		my_die(char *msg);
 void		*my_die_null(char *msg);
+void		*init_effect(int argc, char **argv, int *pos);
+void		init_render(t_scroller, void *lol);
 
 #endif /* !SCROLLER_H_ */
