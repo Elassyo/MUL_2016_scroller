@@ -36,9 +36,9 @@ int		main(int argc, char **argv)
   init_effects(&app);
   if (argc < 3)
     return (list_effects(argv[0], &app));
-  app.w = atoi(argv[1]);
-  app.h = atoi(argv[2]);
-  if (app.w <= 0 || app.h <= 0)
+  app.width = atoi(argv[1]);
+  app.height = atoi(argv[2]);
+  if (app.width <= 0 || app.height <= 0)
     return (my_die("Error: invalid window size\n"));
   return (0);
 }

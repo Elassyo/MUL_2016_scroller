@@ -32,9 +32,9 @@ typedef struct		s_scroller
 {
   int			width;
   int			height;
-  sfRenderWindow	window;
+  sfRenderWindow	*window;
   int			effects_count;
-  t_effect		effects;
+  t_effect		*effects;
 }			t_scroller;
 
 int		my_die(char *msg);
