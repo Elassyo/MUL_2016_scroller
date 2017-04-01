@@ -11,11 +11,12 @@
 #ifndef SCROLLING_TEXT_H_
 # define SCROLLING_TEXT_H_
 
-# define ST_FONT_PATH	"font/font2.png"
-# define ST_FONT_MAP	"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,:;\"-()!?°"
-# define ST_FONT_CW	32
-# define ST_FONT_CH	39
-# define ST_FONT_CPL	10
+# define ST_FONT_PATH	"font/font5.png"
+# define ST_FONT_MAP_	" !\"#$% '()*+,-./0123456789:;<=>?@"
+# define ST_FONT_MAP	ST_FONT_MAP_"ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]"
+# define ST_FONT_CW	20
+# define ST_FONT_CH	20
+# define ST_FONT_CPL	13
 
 # define ST_TYPE_HRZ	1
 # define ST_TYPE_VRT	2

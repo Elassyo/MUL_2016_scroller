@@ -17,6 +17,7 @@ static void		render(t_scroller *app)
   const sfTexture	*texture;
 
   effect = app->effect_list;
+  sfRenderTexture_clear(app->texture, sfBlack);
   while (effect)
     {
       image = sfTexture_copyToImage(sfRenderTexture_getTexture(app->texture));

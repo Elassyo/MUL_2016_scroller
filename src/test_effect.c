@@ -15,7 +15,8 @@ float	saturate(float x)
   return (x < 1.0 ? (x > 0.0 ? x : 0.0) : 1.0);
 }
 
-void	*test_init(int argc, char **argv, int *pos)
+void	*test_init(int __attribute__ ((unused)) argc,
+		   char __attribute__ ((unused)) **argv, int *pos)
 {
   int	*counter;
 
