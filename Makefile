@@ -18,13 +18,15 @@ SRCS		=	main.c				\
 			mini_my.c			\
 			effects/scrolling_text.c	\
 			effects/parallax_scrolling.c	\
-			effects/tracker.c
+			effects/tracker.c		\
+			effects/image.c
 OBJS		=	$(SRCS:.c=.o)
 INCS		=	scroller.h		\
 			effects.h		\
 			scrolling_text.h	\
 			parallax_scrolling.h	\
-			tracker.h
+			tracker.h		\
+			image.h
 LIBS		=	-lm -lc_graph_prog_full
 
 SRCSDIR		=	src

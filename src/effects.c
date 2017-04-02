@@ -26,7 +26,7 @@ int		init_effects(t_scroller *app)
 {
   t_effect	*ptr;
 
-  app->effects_count = 4;
+  app->effects_count = 5;
   if (!(app->effects = malloc(app->effects_count * sizeof(t_effect))))
     return (my_die("Fatal: malloc failed\n"));
   ptr = app->effects;
@@ -34,6 +34,7 @@ int		init_effects(t_scroller *app)
   ADD_EFFECT(scrolling_text);
   ADD_EFFECT(parallax_scrolling);
   ADD_EFFECT(tracker);
+  ADD_EFFECT(image);
   return (0);
 }
 
