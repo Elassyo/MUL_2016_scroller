@@ -5,7 +5,7 @@
 ** Login   <arthur.melin@epitech.eu>
 **
 ** Started on  Sat Apr  1 22:01:17 2017 Arthur Melin
-** Last update Sun Apr  2 14:22:01 2017 Arthur Melin
+** Last update Sun Apr  2 17:32:06 2017 Arthur Melin
 */
 
 #include <effects.h>
@@ -59,20 +59,24 @@ void		*tracker_init(int argc, char **argv, int *pos)
   FILE		*f;
   t_tracker	*trk;
 
-  if (argc - *pos < 2)
-    return (my_die_null("Effect usage: tracker BSF\n"));
+  if (argc - *pos < 4)
+    return (my_die_null("Effect usage: tracker BSF SLIDE VIBRATO\n"));
   if (!(trk = malloc(sizeof(t_tracker))))
     return (my_die_null("Error: malloc failed\n"));
   if (!(f = fopen(argv[*pos + 1], "r")))
     return (my_die_null("Error: failed to open BSF file\n"));
-  trk->pos = 0;
-  trk->len = 0;
+  trk->slide = atoi(argv[*pos + 2]);
+  trk->vibrato = atoi(argv[*pos + 3]);
   if (parse_bsf(trk, f))
     return (NULL);
+  trk->pos = 0;
+  trk->pitch = trk->notes[0].freq / 440;
   trk->clock = sfClock_create();
   trk->sound = sfSound_create();
   sfSound_setBuffer(trk->sound, trk->soundbuffer);
-  (*pos)+=2;
+  sfSound_setPitch(trk->sound, trk->pitch);
+  sfSound_play(trk->sound);
+  (*pos) += 4;
   fclose(f);
   return (trk);
 }
@@ -81,19 +85,23 @@ int		tracker_render(t_scroller __attribute__ ((unused)) *app,
 			       void *param)
 {
   t_tracker	*trk;
-  sfTime	time;
+  float		time;
+  float		slide;
+  float		vibrato;
 
   trk = (t_tracker *)param;
-  time = sfClock_getElapsedTime(trk->clock);
-  if (sfTime_asMilliseconds(time) >
-      trk->notes[(trk->len + trk->pos - 1) % trk->len].dur)
+  time = sfTime_asMilliseconds(sfClock_getElapsedTime(trk->clock));
+  if (time > trk->notes[trk->pos % trk->len].dur)
     {
       sfSound_stop(trk->sound);
       sfSound_play(trk->sound);
-      sfSound_setPitch(trk->sound, trk->notes[trk->pos].freq / 440);
+      trk->pitch = trk->notes[++trk->pos % trk->len].freq / 440;
       sfClock_restart(trk->clock);
-      trk->pos = (trk->pos + 1) % trk->len;
     }
+  slide = trk->slide ? time / trk->notes[trk->pos % trk->len].dur *
+    ((trk->notes[(trk->pos + 1) % trk->len].freq / 440) - trk->pitch) : 0;
+  vibrato = trk->vibrato ? 0.666 * pow(0.001 * time, 2) * sin(time) + 1 : 1;
+  sfSound_setPitch(trk->sound, (trk->pitch + slide) * vibrato);
   return (0);
 }
 

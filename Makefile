@@ -5,7 +5,7 @@
 ## Login   <arthur.melin@epitech.eu>
 ##
 ## Started on  Sat Apr  1 12:34:59 2017 Arthur Melin
-## Last update Sun Apr  2 15:52:30 2017 Arthur Melin
+## Last update Sun Apr  2 16:31:45 2017 Arthur Melin
 ##
 
 NAME		=	scroller
@@ -23,7 +23,8 @@ OBJS		=	$(SRCS:.c=.o)
 INCS		=	scroller.h		\
 			effects.h		\
 			scrolling_text.h	\
-			parallax_scrolling.h
+			parallax_scrolling.h	\
+			tracker.h
 LIBS		=	-lm -lc_graph_prog_full
 
 SRCSDIR		=	src
