@@ -30,11 +30,11 @@ int	image_waves_render(t_scroller *app, void *param)
   int	counter;
 
   counter = (*(int *)param)++;
-  memset(app->ofb, 0, 4 * app->width * app->height);
+  memset(app->ofb, 255, 4 * app->width * app->height);
   y = 0;
   while(y < app->height)
     {
-      px_off = 10 * sin(0.1 * (y + counter * 0.1));
+      px_off = 42 * sin(counter * 0.069) * sin(0.0666 * (y + counter));
       x = px_off < 0 ? 0 : px_off;
       while (x < app->width + (px_off > 0 ? 0 : px_off))
 	{

@@ -42,13 +42,7 @@ int		test_render(t_scroller *app, void *param)
   color[3] = 255;
   i = 0;
   while (i < app->width * app->height)
-    {
-      app->ofb[4 * i] = color[0];
-      app->ofb[4 * i + 1] = color[1];
-      app->ofb[4 * i + 2] = color[2];
-      app->ofb[4 * i + 3] = color[3];
-      i++;
-    }
+    *((sfUint32 *)app->ofb + i++) = *((sfUint32 *)color);
   return (1);
 }
 

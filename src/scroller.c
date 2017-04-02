@@ -5,10 +5,22 @@
 ** Login   <arthur.melin@epitech.eu>
 **
 ** Started on  Sat Apr  1 15:15:13 2017 Arthur Melin
-** Last update Sat Apr  1 18:22:29 2017 Arthur Melin
+** Last update Sun Apr  2 20:19:32 2017 Arthur Melin
 */
 
 #include <scroller.h>
+
+static void	flipcpy(sfUint8 *dst, const sfUint8 *src, int w, int h)
+{
+  int		y;
+
+  y = 0;
+  while (y < h)
+    {
+      memcpy(dst + 4 * y * w, src + 4 * (h - y - 1) * w, 4 * w);
+      y++;
+    }
+}
 
 static void		render(t_scroller *app)
 {
@@ -21,8 +33,7 @@ static void		render(t_scroller *app)
   while (effect)
     {
       image = sfTexture_copyToImage(sfRenderTexture_getTexture(app->texture));
-      memcpy(app->ifb, sfImage_getPixelsPtr(image),
-	     4 * app->width * app->height);
+      flipcpy(app->ifb, sfImage_getPixelsPtr(image), app->width, app->height);
       if (effect->render(app, effect->param))
 	{
 	  sfTexture_updateFromPixels(app->tmpTexture, app->ofb,

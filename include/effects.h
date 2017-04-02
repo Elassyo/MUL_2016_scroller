@@ -39,4 +39,8 @@ void		*image_waves_init(int argc, char **argv, int *pos);
 int		image_waves_render(t_scroller *app, void *param);
 void		image_waves_free(void *param);
 
+void		*checkerboard_init(int argc, char **argv, int *pos);
+int		checkerboard_render(t_scroller *app, void *param);
+void		checkerboard_free(void *param);
+
 #endif /* !EFFECTS_H_ */

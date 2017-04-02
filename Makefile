@@ -20,7 +20,8 @@ SRCS		=	main.c				\
 			effects/parallax_scrolling.c	\
 			effects/tracker.c		\
 			effects/image.c			\
-			effects/image_waves.c
+			effects/image_waves.c		\
+			effects/checkerboard.c
 OBJS		=	$(SRCS:.c=.o)
 INCS		=	scroller.h		\
 			effects.h		\

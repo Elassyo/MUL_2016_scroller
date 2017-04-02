@@ -100,7 +100,7 @@ int		tracker_render(t_scroller __attribute__ ((unused)) *app,
     }
   slide = trk->slide ? time / trk->notes[trk->pos % trk->len].dur *
     ((trk->notes[(trk->pos + 1) % trk->len].freq / 440) - trk->pitch) : 0;
-  vibrato = trk->vibrato ? 0.666 * pow(0.001 * time, 2) * sin(time) + 1 : 1;
+  vibrato = trk->vibrato ? 0.01 * exp(0.001 * time) * sin(time) + 1 : 1;
   sfSound_setPitch(trk->sound, (trk->pitch + slide) * vibrato);
   return (0);
 }
