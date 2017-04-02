@@ -5,7 +5,7 @@
 ## Login   <arthur.melin@epitech.eu>
 ##
 ## Started on  Sat Apr  1 12:34:59 2017 Arthur Melin
-## Last update Sat Apr  1 18:01:21 2017 Arthur Melin
+## Last update Sun Apr  2 12:26:19 2017 Baptiste Kissel
 ##
 
 NAME		=	scroller
@@ -16,12 +16,14 @@ SRCS		=	main.c				\
 			effects.c			\
 			test_effect.c			\
 			mini_my.c			\
-			effects/scrolling_text.c
+			effects/scrolling_text.c	\
+			effects/parallax_scrolling.c
 OBJS		=	$(SRCS:.c=.o)
-INCS		=	scroller.h	\
-			effects.h	\
-			scrolling_text.h
-LIBS		=	-lm -lcsfml-audio -lcsfml-graphics -lcsfml-window -lcsfml-system
+INCS		=	scroller.h		\
+			effects.h		\
+			scrolling_text.h	\
+			parallax_scrolling.h
+LIBS		=	-lm -lc_graph_prog_full
 
 SRCSDIR		=	src
 SUBDIRS		=	effects

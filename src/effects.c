@@ -5,7 +5,7 @@
 ** Login   <remi.vuillemin@epitech.eu@epitech.net>
 **
 ** Started on  Sat Apr  1 13:11:05 2017 Rémi
-** Last update Sat Apr  1 16:42:25 2017 Arthur Melin
+** Last update Sun Apr  2 12:46:30 2017 Baptiste Kissel
 */
 
 #include <effects.h>
@@ -26,12 +26,13 @@ int		init_effects(t_scroller *app)
 {
   t_effect	*ptr;
 
-  app->effects_count = 2;
+  app->effects_count = 3;
   if (!(app->effects = malloc(app->effects_count * sizeof(t_effect))))
     return (my_die("Fatal: malloc failed\n"));
   ptr = app->effects;
   ADD_EFFECT(test);
   ADD_EFFECT(scrolling_text);
+  ADD_EFFECT(parallax_scrolling);
   return (0);
 }
 
