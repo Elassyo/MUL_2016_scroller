@@ -5,7 +5,7 @@
 ** Login   <arthur.melin@epitech.eu>
 **
 ** Started on  Sat Apr  1 16:40:37 2017 Arthur Melin
-** Last update Sat Apr  1 20:25:47 2017 Arthur Melin
+** Last update Sun Apr  2 17:26:00 2017 Arthur Melin
 */
 
 #include <effects.h>
@@ -58,6 +58,7 @@ static int	gen_sprite(t_scrolling_text *st, char *text)
 
 void			*scrolling_text_init(int argc, char **argv, int *pos)
 {
+  sfVector2f		vec;
   char			*text;
   t_scrolling_text	*res;
 
@@ -73,29 +74,32 @@ void			*scrolling_text_init(int argc, char **argv, int *pos)
     return (my_die_null("Error: invalid scroll type (1->4)\n"));
   res->counter = 0;
   (*pos) += 3;
+  vec.x = res->width / 2;
+  vec.y = res->height / 2;
+  sfSprite_setOrigin(res->sprite, vec);
+  res->width *= (vec.x = 4);
+  res->height *= (vec.y = 4);
+  sfSprite_setScale(res->sprite, vec);
   return (res);
 }
 
 int			scrolling_text_render(t_scroller *app, void *param)
 {
-  sfVector2f		vec;
+  sfVector2f		pos;
   t_scrolling_text	*st;
 
   st = (t_scrolling_text *)param;
-  vec.x = st->width / 2;
-  vec.y = st->height / 2;
-  sfSprite_setOrigin(st->sprite, vec);
   if (st->scroll_type == ST_TYPE_SIN)
     {
-      vec.y = (sin(st->counter * M_PI / 180) + 1) * app->height / 2;
+      pos.y = (0.6 * sin(st->counter * M_PI / 180) + 1) * app->height / 2;
       sfSprite_setRotation(st->sprite, 45 * cos(st->counter * M_PI / 180));
     }
   else
-    vec.y = st->scroll_type == ST_TYPE_HRZ ?
-      app->height / 2 : 4 * st->counter % app->height;
-  vec.x = st->scroll_type == ST_TYPE_VRT ?
-    app->width / 2 : 4 * st->counter % app->width;
-  sfSprite_setPosition(st->sprite, vec);
+    pos.y = st->scroll_type == ST_TYPE_HRZ ? app->height / 2 :
+      5 * st->counter % (app->height + st->height) - st->height / 2;
+  pos.x = st->scroll_type == ST_TYPE_VRT ? app->width / 2 :
+    5 * st->counter % (app->width + st->width) - st->width / 2;
+  sfSprite_setPosition(st->sprite, pos);
   sfRenderTexture_drawSprite(app->texture, st->sprite, NULL);
   st->counter++;
   return (0);
