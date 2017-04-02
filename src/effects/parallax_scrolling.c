@@ -11,20 +11,23 @@
 #include <effects.h>
 #include <parallax_scrolling.h>
 
-void		*parallax_scrolling_init(int argc, char **argv, int *pos)
+void			*parallax_scrolling_init(int __attribute__ ((unused))
+						 argc,
+						 char __attribute__ ((unused))
+						 **argv, int *pos)
 {
-  t_parallax_scrolling		*res;
-  sfImage			*image;
-  
+  t_parallax_scrolling	*res;
+  sfImage		*image;
+
   if (!(res = malloc(sizeof(t_parallax_scrolling))))
     return (my_die_null("Fatal: malloc failed\n"));
   if (!(image = sfImage_createFromFile(ST_IMAGE_PATH)))
-    return (my_die("Error: failed to open font image\n"));
+    return (my_die_null("Error: failed to open font image\n"));
   sfImage_createMaskFromColor(image, sfBlack, 0);
   if (!(res->texture = sfTexture_createFromImage(image, NULL)))
-    return (my_die("Error: failed to upload image to texture\n"));
+    return (my_die_null("Error: failed to upload image to texture\n"));
   if (!(res->sprite = sfSprite_create()))
-    return (my_die("Error: failed to create sprite\n"));
+    return (my_die_null("Error: failed to create sprite\n"));
   sfSprite_setTexture(res->sprite, res->texture, sfTrue);
   sfImage_destroy(image);
   res->counter = 0;
@@ -32,7 +35,7 @@ void		*parallax_scrolling_init(int argc, char **argv, int *pos)
   return (res);
 }
 
-int		parallax_scrolling_render(t_scroller *app, void *param)
+int			parallax_scrolling_render(t_scroller *app, void *param)
 {
   sfVector2f		vec;
   t_parallax_scrolling	*ps;
@@ -50,9 +53,9 @@ int		parallax_scrolling_render(t_scroller *app, void *param)
   return (0);
 }
 
-void		parallax_scrolling_free(void *param)
+void			parallax_scrolling_free(void *param)
 {
-  t_parallax_scrolling		*ps;
+  t_parallax_scrolling	*ps;
 
   ps = (t_parallax_scrolling *)param;
   sfSprite_destroy(ps->sprite);
