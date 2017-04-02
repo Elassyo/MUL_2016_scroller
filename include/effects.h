@@ -5,7 +5,7 @@
 ** Login   <arthur.melin@epitech.eu>
 **
 ** Started on  Sat Apr  1 16:41:27 2017 Arthur Melin
-** Last update Sat Apr  1 16:42:12 2017 Arthur Melin
+** Last update Sat Apr  1 22:56:11 2017 Baptiste Kissel
 */
 
 #ifndef EFFECTS_H_
@@ -22,6 +22,10 @@ void		test_free(void *param);
 void		*scrolling_text_init(int argc, char **argv, int *pos);
 int		scrolling_text_render(t_scroller *app, void *param);
 void		scrolling_text_free(void *param);
+
+void		*parallax_scrolling_init(int argc, char **argv, int *pos);
+int		parallax_scrolling_render(t_scroller *app, void *param);
+void		parallax_scrolling_free(void *param);
 
 void		*tracker_init(int argc, char **argv, int *pos);
 int		tracker_render(t_scroller *app, void *param);
