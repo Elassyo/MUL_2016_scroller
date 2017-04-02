@@ -62,7 +62,7 @@ int		window_create(t_scroller *app);
 void		window_destroy(t_scroller *app);
 
 int		init_effects(t_scroller *app);
-int		list_effects(char *app_name, t_scroller *app);
+int		list_effects(char *app_name, int help, t_scroller *app);
 
 int		my_die(char *msg);
 void		*my_die_null(char *msg);

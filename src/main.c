@@ -60,7 +60,7 @@ int	parse_cmd(int argc, char **argv, t_scroller *app)
 	  i++;
 	}
       if (i == app->effects_count)
-	return (my_die("Error: invalid argument\n"));
+	return (my_die("Error: unknown effect specified\n"));
     }
   return (0);
 }
@@ -73,7 +73,7 @@ int			main(int argc, char **argv)
   if (init_effects(&app))
     return (84);
   if (argc < 3)
-    return (list_effects(argv[0], &app));
+    return (list_effects(argv[0], argc == 2 && !strcmp(argv[1], "-h"), &app));
   app.effect_list = NULL;
   if (parse_cmd(argc, argv, &app))
     return (84);

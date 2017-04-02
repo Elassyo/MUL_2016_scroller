@@ -5,7 +5,7 @@
 ## Login   <arthur.melin@epitech.eu>
 ##
 ## Started on  Sat Apr  1 12:34:59 2017 Arthur Melin
-## Last update Sat Apr  1 18:01:21 2017 Arthur Melin
+## Last update Sat Apr  1 22:11:37 2017 Arthur Melin
 ##
 
 NAME		=	scroller
@@ -16,7 +16,8 @@ SRCS		=	main.c				\
 			effects.c			\
 			test_effect.c			\
 			mini_my.c			\
-			effects/scrolling_text.c
+			effects/scrolling_text.c	\
+			effects/tracker.c
 OBJS		=	$(SRCS:.c=.o)
 INCS		=	scroller.h	\
 			effects.h	\

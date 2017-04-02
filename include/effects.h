@@ -23,4 +23,8 @@ void		*scrolling_text_init(int argc, char **argv, int *pos);
 int		scrolling_text_render(t_scroller *app, void *param);
 void		scrolling_text_free(void *param);
 
+void		*tracker_init(int argc, char **argv, int *pos);
+int		tracker_render(t_scroller *app, void *param);
+void		tracker_free(void *param);
+
 #endif /* !EFFECTS_H_ */
