@@ -5,11 +5,7 @@
 ## Login   <arthur.melin@epitech.eu>
 ##
 ## Started on  Sat Apr  1 12:34:59 2017 Arthur Melin
-<<<<<<< HEAD
-## Last update Sun Apr  2 17:07:12 2017 Baptiste Kissel
-=======
-## Last update Sun Apr  2 16:31:45 2017 Arthur Melin
->>>>>>> 10f289853d6aab2796bd7622677d60edc908eb11
+## Last update Sun Apr  2 18:53:03 2017 Arthur Melin
 ##
 
 NAME		=	scroller
@@ -23,22 +19,14 @@ SRCS		=	main.c				\
 			effects/scrolling_text.c	\
 			effects/parallax_scrolling.c	\
 			effects/tracker.c		\
-<<<<<<< HEAD
-			effects/image_waves.c
-=======
 			effects/image.c
->>>>>>> 10f289853d6aab2796bd7622677d60edc908eb11
 OBJS		=	$(SRCS:.c=.o)
 INCS		=	scroller.h		\
 			effects.h		\
 			scrolling_text.h	\
 			parallax_scrolling.h	\
-<<<<<<< HEAD
-			image_waves.h
-=======
 			tracker.h		\
 			image.h
->>>>>>> 10f289853d6aab2796bd7622677d60edc908eb11
 LIBS		=	-lm -lc_graph_prog_full
 
 SRCSDIR		=	src
