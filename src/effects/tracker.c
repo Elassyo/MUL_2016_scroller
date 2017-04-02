@@ -30,12 +30,12 @@ int	parse_bsf(t_tracker *trk, FILE *f)
 {
   int	i;
   char	key[256];
-  char	sample[256];
+  char	path[256];
 
-  strcpy(sample, "modlike/");
+  strcpy(path, "modlike/");
   if (fscanf(f, "[track%d]%*[\n ] ", &i) != 1 || i != 1 ||
       fscanf(f, "%256[a-z]=", key) != 1 || strcmp(key, "sample") ||
-      fscanf(f, "%*[\"]%256[a-zA-Z.-_]%*[\"\n ]", sample + strlen(sample)) != 1 ||
+      fscanf(f, "%*[\"]%256[a-zA-Z.-_]%*[\"\n ]", path + strlen(path)) != 1 ||
       fscanf(f, "%256[a-z]=", key) != 1 || strcmp(key, "duration"))
     return (my_die("Error: invalid BSF file 1\n"));
   i = 0;
@@ -51,7 +51,7 @@ int	parse_bsf(t_tracker *trk, FILE *f)
   if (fscanf(f, "%256[a-z]=", key) != 1 || strcmp(key, "frequency") ||
       parse_bsf_2(trk, f))
     return (my_die("Error: invalid BSF file 3\n"));
-  return ((trk->soundbuffer = sfSoundBuffer_createFromFile(sample)) ? 0 : 84);
+  return ((trk->soundbuffer = sfSoundBuffer_createFromFile(path)) ? 0 : 84);
 }
 
 void		*tracker_init(int argc, char **argv, int *pos)
